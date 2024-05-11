@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DigiromSender</title>
+    <link href='https://fonts.googleapis.com/css?family=Kanit' rel='stylesheet'>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>DigiromSender</h1>
+    <div class="wrapper">
+        <div id="notSupported">Sorry, Web Serial is not supported on this device, make sure you're running Chrome 78 or
+            later and have enabled the #enable-experimental-web-platform-features flag in chrome://flags</div>
+        <div style="display: flex;">
+            <button id="connect_serial_button" onClick="connect_serial()">USB Connect</button>
+            <button id="connect_wificom_button" onClick="connect_wificom()">WIFICOM Connect</button>
+        </div>
+        <div id="log"></div>
+        <input id="input" type="text" onKeyPress="handle(event)" disabled />
+        <button id="sendButton" onClick="send()" disabled>Send</button>
+
+        <div class="tab" id="tab">
+        </div>
+        <div id="tabcontent">
+        </div>
+    </div>
+    <script src="source.js"></script>
+    <div id="popup"></div>
+    <div id="wificom_box" class="modal">
+        <div class="modal-content">
+          <span></p>Setting Wificom</span><br>
+          <span>API-KEY</span><br>
+          <input type="text" id="apikey" value=""><br>
+          <span>Device Name</span><br>
+          <input type="text" id="devicename" value=""><br>
+          <input type="checkbox" id="savecookie" checked>
+          <label for="savecookie">Save</label><br><br>
+          <button id="" onclick="wificom_c()">Connect</button>
+        </div>
+      
+      </div>
+</body>
+<br>
+<footer class="footer">
+    *credit for*
+    <a href="https://humulos.com/digimon/digirom/">humulos</a>, 
+    <a href="wificom.dev">wificom</a>
+    caft by naynan
+</footer>
+</html>
