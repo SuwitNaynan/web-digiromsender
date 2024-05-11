@@ -5,5 +5,5 @@
 <a href="https://digiromsender.onrender.com">digiromsender.onrender.com</a>
 
 *credit for*
-    <a href="https://humulos.com/digimon/digirom/">humulos</a>, <a href="wificom.dev">wificom</a><br>
+    <a href="https://humulos.com/digimon/digirom/">humulos</a>, <a href="wificom.dev">wificom</a><br>, BrassBolt, BladeSabre, Feanan, jyoshiikuta
     caft by naynan
