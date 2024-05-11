@@ -50,13 +50,13 @@ function connect_wificom() {
 }
 
 async function connect_serial() {
-    const inputField = document.getElementById("input");
-    inputField.disabled = false;
-    inputField.focus();
-    inputField.select();
 
     port = await navigator.serial.requestPort();
     if (port) {
+        const inputField = document.getElementById("input");
+        inputField.disabled = false;
+        inputField.focus();
+        inputField.select();
         document.getElementById("sendButton").disabled = false;
         document.getElementById("connect_serial_button").disabled = true;
         document.getElementById("connect_wificom_button").disabled = true;
@@ -535,6 +535,7 @@ function wificom_send(digirom) {
                 readLoop_wifi();
             }
             if (data2['last_online_ago_seconds'] > 6) {
+                document.getElementById("input").disabled = true;
                 log.textContent += "Wificom is disconnected on " + data2['last_online_ago_seconds'] + " sec ago\n";
                 log.scrollTop = log.scrollHeight;
             }
