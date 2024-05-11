@@ -6,6 +6,12 @@ var wifiloop;
 if ('serial' in navigator) {
     const notSupported = document.getElementById('notSupported');
     notSupported.classList.add('hidden');
+    document.getElementById('connect_serial_button').style.width = "50%";
+    document.getElementById('connect_wificom_button').style.width = "50%";
+} else{
+    document.getElementById('connect_serial_button').style.display = "none";
+    document.getElementById('notSupported').style.display = "none";
+    document.getElementById('connect_wificom_button').style.width = "100%";
 }
 
 const log = document.getElementById("log")
