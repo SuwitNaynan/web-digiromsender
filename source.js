@@ -3,6 +3,15 @@ var apikey = "";
 var devicename = "";
 var wifiloop;
 
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const p_digirom = urlParams.get('d');
+console.log(p_digirom);
+
+if(p_digirom){
+    document.getElementById('input').value = p_digirom;
+}
+
 if ('serial' in navigator) {
     document.getElementById('connect_serial_button').style.width = "50%";
     document.getElementById('connect_wificom_button').style.width = "50%";
