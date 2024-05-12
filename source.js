@@ -145,7 +145,7 @@ function readLoop_wifi() {
         wifiloop = setTimeout(function () {
             readLoop_wifi();
         }, 5000);
-        if (data['last_online_ago_seconds'] > 6) {
+        if (data['last_online_ago_seconds'] > 10) {
             log.textContent += 'Wificom is disconnected\n';
             log.scrollTop = log.scrollHeight;
             document.getElementById("sendButton").disabled = true;
