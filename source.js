@@ -92,7 +92,7 @@ async function connect_serial() {
 
 function writeToStream(line) {
     const writer = outputStream.getWriter();
-    log.textContent += "Sended : " + line + ' Waitng ouput\n';
+    log.textContent += "Sended: " + line + ' Waiting output\n';
     log.scrollTop = log.scrollHeight;
     console.log('[SEND]', line);
     writer.write(line + '\r');
@@ -554,7 +554,7 @@ function wificom_send(digirom) {
                     log.textContent += "Connect to wificom Successful\n";
                     log.scrollTop = log.scrollHeight;
                 } else {
-                    log.textContent += "Sended : " + digirom + ' Waitng ouput\n';
+                    log.textContent += "Sended: " + digirom + ' Waiting output\n';
                     log.scrollTop = log.scrollHeight;
                 }
                 mode = 2;
