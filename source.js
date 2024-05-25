@@ -84,6 +84,8 @@ async function connect_serial() {
         outputStream = encoder.writable;
 
         reader = inputStream.getReader();
+        log.textContent += "Connect to USB Successful\n";
+        log.scrollTop = log.scrollHeight;
         readLoop();
     }
 }
@@ -552,7 +554,10 @@ function wificom_send(digirom) {
             console.log(data2);
             if (last_send == data2['last_code_sent_at'] && data2['last_online_ago_seconds'] < 6) {
                 if (digirom == "connect") {
-                    log.textContent += "Send Digirom via wificom Successful\n";
+                    log.textContent += "Connect to wificom Successful\n";
+                    log.scrollTop = log.scrollHeight;
+                } else {
+                    log.textContent += "Sended : " + digirom + ' Waitng ouput\n';
                     log.scrollTop = log.scrollHeight;
                 }
                 mode = 2;
