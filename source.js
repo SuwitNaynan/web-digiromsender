@@ -92,6 +92,8 @@ async function connect_serial() {
 
 function writeToStream(line) {
     const writer = outputStream.getWriter();
+    log.textContent += "Sended : " + line + ' Waitng ouput\n';
+    log.scrollTop = log.scrollHeight;
     console.log('[SEND]', line);
     writer.write(line + '\r');
     writer.releaseLock();
