@@ -8,14 +8,14 @@ const urlParams = new URLSearchParams(queryString);
 const p_digirom = urlParams.get('d');
 console.log(p_digirom);
 
-if(p_digirom){
+if (p_digirom) {
     document.getElementById('input').value = p_digirom;
 }
 
 if ('serial' in navigator) {
     document.getElementById('connect_serial_button').style.width = "50%";
     document.getElementById('connect_wificom_button').style.width = "50%";
-} else{
+} else {
     document.getElementById('connect_serial_button').style.display = "none";
     document.getElementById('connect_wificom_button').style.width = "100%";
 }
@@ -138,14 +138,14 @@ function readLoop_wifi() {
         body: JSON.stringify(body),
     }).then(response => response.json()).then(function (data) {
         console.log(data);
-        if (data['last_output']) {
+        if (data['last_output'] && data['last_output'] !== "CommandError('op=CONNECT',)") {
             log.textContent += data['last_output'] + '\n';
             log.scrollTop = log.scrollHeight;
         }
         wifiloop = setTimeout(function () {
             readLoop_wifi();
         }, 5000);
-        if (data['last_online_ago_seconds'] > 10) {
+        if (data['last_online_ago_seconds'] > 6) {
             log.textContent += 'Wificom is disconnected\n';
             log.scrollTop = log.scrollHeight;
             document.getElementById("sendButton").disabled = true;
@@ -414,11 +414,11 @@ var digiroms = [
     ["D-Scanner", "3.0 Jogress Silphymon-SlashAngemon", "V1-8211-2B8F"],
     ["D-Scanner", "3.0 Jogress Thundernbirdmon->Hippogriffmon", "V1-91B1"],
     ["D-Scanner", "3.0 Jogress Lucemon FM->Huanlongmon", "V1-9211"],
-    ["iC", "IR 10x Battle", "IC2-0067-4257-0197-0007-D087"],
-    ["iC", "IR 20x Battle", "IC2-1137-4B07-0B37-0007-E1F7"],
-    ["iC", "IR Burst Battle", "IC2-2067-6047-0247-0007-5037"],
-    ["iC", "IR DigiWindow (Battle)", "IC2-1577-4927-0B47-0007-0057"],
-    ["iC", "IR DigiWindow (Scan)", "IC2-1577-4927-0B47-0007-3117"],
+    ["iC", "IR 10x Battle", "!IC2-0067-4257-0197-0007-D087"],
+    ["iC", "IR 20x Battle", "!IC2-1137-4B07-0B37-0007-E1F7"],
+    ["iC", "IR Burst Battle", "!IC2-2067-6047-0247-0007-5037"],
+    ["iC", "IR DigiWindow (Battle)", "!IC2-1577-4927-0B47-0007-0057"],
+    ["iC", "IR DigiWindow (Scan)", "!IC2-1577-4927-0B47-0007-3117"],
     ["iC", "IR Battle with iC 10x for Digi Shop 1", "IC1-C067-4257-0197-0007-@F007"],
     ["iC", "IR Battle with iC 20x for Digi Shop 2", "IC1-D067-4257-0197-0007-@F007"],
     ["iC", "IR Battle with Burst for Digi Shop 3", "IC1-E067-4257-0197-0007-@F007"],
@@ -563,7 +563,9 @@ function wificom_send(digirom) {
                 document.getElementById("sendButton").disabled = false;
                 document.getElementById("connect_serial_button").disabled = true;
                 document.getElementById("connect_wificom_button").disabled = true;
-                readLoop_wifi();
+                wifiloop = setTimeout(function () {
+                    readLoop_wifi();
+                }, 5000);
             }
             if (data2['last_online_ago_seconds'] > 6) {
                 document.getElementById("input").disabled = true;
